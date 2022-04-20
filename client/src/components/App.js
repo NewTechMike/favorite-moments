@@ -2,6 +2,7 @@
 import React, { useState, useEffect} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignUp from './SignUp';
+import Home from './Home';
 import '../App.css';
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignUp setUser={setUser}/>
+          </Route>
+          <Route>
+            <Home />
           </Route>
         </Switch>
       </div>
