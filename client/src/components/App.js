@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import React, { useState, useEffect} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import SignUp from './Signup';
+import SignUp from './SignUp';
 import '../App.css';
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
           <Route path="/testing">
             <h1>Test Route</h1>
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <h1> Page Count: {count} </h1>
           </Route>
           <Route path="/signup">
