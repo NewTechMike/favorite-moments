@@ -5,7 +5,8 @@ function Home(){
   let history = useHistory();
 
   function loginClick(){
-    alert("You Cliked Login")
+    history.push('/login')
+    console.log("Login Clicked")
   }
   function signUpClick(){
     history.push('/signup')

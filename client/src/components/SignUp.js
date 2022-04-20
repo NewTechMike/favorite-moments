@@ -51,7 +51,8 @@ function SignUp ({setUser}){
           autoComplete="off"
           value={passwordConfirmation}
           onChange={(e)=> setPasswordConfirmation(e.target.value)}
-        />
+        /> <br/>
+        <button type="button">Sign Up</button>
       </form>
     </div>
   );

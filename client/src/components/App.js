@@ -3,6 +3,7 @@ import React, { useState, useEffect} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignUp from './SignUp';
 import Home from './Home';
+import Login from './Login';
 import '../App.css';
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignUp setUser={setUser}/>
+          </Route>
+          <Route path="/login">
+            <Login setUser={setUser}/>
           </Route>
           <Route>
             <Home />
