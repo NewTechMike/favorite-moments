@@ -1,24 +1,29 @@
-import React, { useState} from "react"
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom";
 
 function Login ({setUser}){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
-function handleSubmit(e){
-  e.preventDefault();
-  fetch('/login', {
-    method: "POST", 
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username, password }),
-  }).then((r) => {
-    if(r.ok) { 
-      r.json().then((user) => setUser(user));
-    }
-  });
-}
-
+  function handleSubmit(e){
+    e.preventDefault();
+    fetch('/login', {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((r) => {
+      if(r.ok) { 
+        r.json().then((user) => setUser(user));
+      }
+    });
+    setTimeout (() => {
+    history.push('/me');
+  }, 500);
+  }
+  
   return(
     <div>
       <form onSubmit={handleSubmit}>
