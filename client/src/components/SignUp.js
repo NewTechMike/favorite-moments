@@ -13,8 +13,8 @@ function SignUp ({setUser}){
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
-        password,
+        username: username,
+        password: password,
         password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
@@ -26,7 +26,7 @@ function SignUp ({setUser}){
 
   return(
     <div>
-      <form submit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
         <label htmlFor="username">Username: </label>
         <input 
@@ -52,7 +52,7 @@ function SignUp ({setUser}){
           value={passwordConfirmation}
           onChange={(e)=> setPasswordConfirmation(e.target.value)}
         /> <br/>
-        <button type="button">Sign Up</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

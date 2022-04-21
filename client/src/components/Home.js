@@ -1,12 +1,11 @@
 import React from "react"; 
-import { useHistory, NavLink, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function Home(){
   let history = useHistory();
 
   function loginClick(){
     history.push('/login')
-    console.log("Login Clicked")
   }
   function signUpClick(){
     history.push('/signup')
