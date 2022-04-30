@@ -1,20 +1,29 @@
 class MomentsController < ApplicationController
+  before_action :authorize#, only: [:create]
 
   def create
-    moment = Moment.create!(moments_params)
-    render json: moment, status: :created
-  end
-  
-=begin
-  def index
-    moments = Moment.all
-    render json: moments
+    #user = User.find_by(id: session[:user_ id])
+    moment = current_user.moments.create!(moment_params)
+    if moment.valid?
+      render json: moment, status: :created
+    else 
+      render json: { error: moment.errors.full_messages }, status: :unprocessable_entity
+    end 
   end
 
   def show
-    moment = Moment.find_by(id: params[:moment_id])
+    byebug
+    moment = Moment.find_by(id: params[:id])
     render json: moment
   end 
+
+  def index
+    byebug
+    moments = current_user.moments
+    render json: moments
+  end
+=begin
+ 
 
   def update
   end 
@@ -28,7 +37,11 @@ class MomentsController < ApplicationController
 
   private
   
-  def moments_params
+  def current_user
+    User.find_by(id: session[:user_id])
+  end 
+
+  def moment_params
     params.permit(:category, :title, :moment)
   end 
 

@@ -31,18 +31,18 @@ function Me(){
 
   function handleSubmit(e){
     e.preventDefault();
-    fetch("/moments", {
+    fetch("/me/:user_id/moments", {
       method: "POST", 
       header: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(
-        formData
-    )
+      body: JSON.stringify(formData)
   })
       .then((r)=>r.json())
       .then((data) => setFormData(data));
   }
+
+  console.log("formD: ",formData)
 
   return (
     <div>

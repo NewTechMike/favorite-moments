@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :moments
-  resources :users
+  resources :moments, only: [:create, :show, :index]
+  resources :users 
 
   get '/me', to: "users#show"
+  post '/me/:user_id/moments', to: "moments#create"
+
+  get '/moments', to: "moments#index"
+  get '/moments/:moment_id', to: "moments#show"
+
   post '/signup', to: "users#create"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
