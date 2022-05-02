@@ -7,18 +7,22 @@ class MomentsController < ApplicationController
     if moment.valid?
       render json: moment, status: :created
     else 
-      render json: { error: moment.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: moment.errors.full_messages }, status: :unprocessable_entity
     end 
   end
 
   def show
-    byebug
-    moment = Moment.find_by(id: params[:id])
-    render json: moment
+    #byebug
+    moment = current_user.moments.find_by(id: params[:id])
+    if moment.valid?
+      render json: moment
+    else
+      render json: { error: "Not found" }, status: :unauthorized
+    end
   end 
 
   def index
-    byebug
+    #byebug
     moments = current_user.moments
     render json: moments
   end

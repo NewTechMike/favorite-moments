@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 //import Form from './Form';
+import Moments from './Moments'
 
 function Me(){
   const [user, setUser] = useState("")
@@ -9,7 +10,9 @@ function Me(){
     title: "",
     category: " ",
     moment: " "
-  })
+  }) //Future Self: Make a state out of Each from FD
+  // Also, add an onChange in each field of the form
+  // "(e)=>onChange(e.target.value)"
 
   useEffect(()=>{
     fetch('/me')
@@ -31,18 +34,20 @@ function Me(){
 
   function handleSubmit(e){
     e.preventDefault();
-    fetch("/me/:user_id/moments", {
+    fetch("/moments", {
       method: "POST", 
       header: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({formData})
   })
       .then((r)=>r.json())
       .then((data) => setFormData(data));
   }
 
   console.log("formD: ",formData)
+
+
 
   return (
     <div>
@@ -52,7 +57,7 @@ function Me(){
           <button type="button" onClick={handleLogout}>Logout</button>
         </div>
       </h1>
-
+    <div>
       <form onSubmit={handleSubmit} >
         <label>
           Title:
@@ -79,6 +84,7 @@ function Me(){
           value="Submit" 
         />
       </form>
+      </div>
     </div>
   )
 }
