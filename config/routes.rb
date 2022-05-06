@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get '/me', to: "users#show"
   post '/me/:user_id/moments', to: "moments#create"
 
-  get '/moments', to: "moments#index"
-  get '/moments/:moment_id', to: "moments#show"
+  get '/me/:user_id/moments', to: "moments#index"
+  #get '/me/:user_id/moments/:moment_id', to: "moments#show"
 
   post '/signup', to: "users#create"
   post '/login', to: "sessions#create"

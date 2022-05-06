@@ -1,9 +1,10 @@
 class MomentsController < ApplicationController
-  before_action :authorize#, only: [:create]
+  before_action :authorize, only: [:create]
 
   def create
     #user = User.find_by(id: session[:user_ id])
-    moment = current_user.moments.create!(moment_params)
+    moment = current_user.moments.create(moment_params)
+    #byebug
     if moment.valid?
       render json: moment, status: :created
     else 
@@ -14,7 +15,7 @@ class MomentsController < ApplicationController
   def show
     #byebug
     moment = current_user.moments.find_by(id: params[:id])
-    if moment.valid?
+    if moment
       render json: moment
     else
       render json: { error: "Not found" }, status: :unauthorized

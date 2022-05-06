@@ -6,11 +6,14 @@ import Moments from './Moments'
 function Me(){
   const [user, setUser] = useState("")
   const history = useHistory();
-  const [formData, setFormData] = useState({
-    title: "",
-    category: " ",
-    moment: " "
-  }) //Future Self: Make a state out of Each from FD
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [moment, setMoment] = useState("");
+ // const [formData, setFormData] = useState({
+   // title: "",
+    //category: " ",
+    //moment: " "
+  //}) //Future Self: Make a state out of Each from FD
   // Also, add an onChange in each field of the form
   // "(e)=>onChange(e.target.value)"
 
@@ -39,13 +42,21 @@ function Me(){
       header: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({formData})
+      body: JSON.stringify({
+        title: title, 
+        category: category, 
+        moment: moment
+      })
   })
       .then((r)=>r.json())
-      .then((data) => setFormData(data));
+      .then((data) => console.log("me: ",data));
   }
 
-  console.log("formD: ",formData)
+  console.log("title: ",title)
+
+  function handleMomentClick(){
+    history.push('/moments');
+  }
 
 
 
@@ -65,18 +76,21 @@ function Me(){
             type="text" 
             name="title" 
             placeholder="ex: The Matrix"
+            onChange={(e) => setTitle(e.target.value)}
             /> <br/>
           Category:
           <input 
             type="text" 
             name="category" 
             placeholder="ex: Movie"
+            onChange={(e) => setCategory(e.target.value)}
             /> <br/>
           Moment: 
           <textarea 
             type="text" 
             name="title" 
             placeholder="ex: Bullet time"
+            onChange={(e) => setMoment(e.target.value)}
             />
         </label> <br/>
         <input 
@@ -84,6 +98,7 @@ function Me(){
           value="Submit" 
         />
       </form>
+      <button onClick={handleMomentClick}>Moments</button>
       </div>
     </div>
   )

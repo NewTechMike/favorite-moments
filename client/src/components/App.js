@@ -4,6 +4,7 @@ import SignUp from './SignUp';
 import Home from './Home';
 import Login from './Login';
 import Me from './Me';
+import Moments from './Moments';
 import '../App.css';
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path='/me'>
             <Me />
+          </Route>
+          <Route path='/moments'>
+            <Moments />
           </Route>
         </Switch>
       </div>
