@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/me', to: "users#show"
   post '/moments', to: "moments#create"
   get '/me/:user_id/moments', to: "moments#index" 
-  delele '/moments/:moment_id', to: "moments#destory"
+  #delele '/moments/:moment_id', to: "moments#destory"
 
   post '/signup', to: "users#create"
   post '/login', to: "sessions#create"

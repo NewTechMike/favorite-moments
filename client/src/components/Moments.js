@@ -18,8 +18,13 @@ function Moments(){
 
   function handleDelete(id){
     fetch(`/moments/${id}`,{
-      method: "DETELE"
+      method: "DELETE"
     })
+    //.then((r) => r.json())
+    //.then((data) => console.log(data))
+    setTimeout (() => {
+      history.push('/moments');
+    }, 500);
   }
 
   return(
@@ -28,8 +33,8 @@ function Moments(){
       <button onClick={handleClick}>Home</button>
       {temp.map((data)=>(
         <ul key={data.id}>
-          <li>{data.title}, {data.category}, {data.moment}</li>
-          <button onClick={handleDelete}>Delete</button>
+          <li>{data.id}, {data.title}, {data.category}, {data.moment}</li>
+          <button type="button" onClick={() => handleDelete(data.id)}>Delete</button>
         </ul>
       ))}
     </div>

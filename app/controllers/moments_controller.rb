@@ -28,8 +28,8 @@ class MomentsController < ApplicationController
   end
   
   def destroy
-    moment = Moment.find_by(id: params[:moment_id])
-    moment.delete 
+    moment = Moment.find_by(id: params[:id])
+    moment.destroy 
     head :no_content
   end
   
