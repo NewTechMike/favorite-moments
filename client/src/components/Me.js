@@ -6,17 +6,11 @@ import Moments from './Moments'
 function Me(){
   const [user, setUser] = useState("")
   const history = useHistory();
+ 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [moment, setMoment] = useState("");
- // const [formData, setFormData] = useState({
-   // title: "",
-    //category: " ",
-    //moment: " "
-  //}) //Future Self: Make a state out of Each from FD
-  // Also, add an onChange in each field of the form
-  // "(e)=>onChange(e.target.value)"
-
+ 
   useEffect(()=>{
     fetch('/me')
     .then((r)=>r.json())
@@ -37,19 +31,21 @@ function Me(){
 
   function handleSubmit(e){
     e.preventDefault();
+    const obj = {
+      title: title,
+      category: category,
+      moment: moment
+    }
+    console.log("obj: ", obj)
     fetch("/moments", {
       method: "POST", 
-      header: {
+      headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        title: title, 
-        category: category, 
-        moment: moment
-      })
+      body: JSON.stringify(obj)
   })
       .then((r)=>r.json())
-      .then((data) => console.log("me: ",data));
+      .then((data) => console.log(data));
   }
 
   console.log("title: ",title)
@@ -57,8 +53,6 @@ function Me(){
   function handleMomentClick(){
     history.push('/moments');
   }
-
-
 
   return (
     <div>

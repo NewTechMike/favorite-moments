@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  resources :moments, only: [:create, :show, :index]
+  resources :moments, only: [:create, :show, :index, :destroy]
   resources :users 
 
   get '/me', to: "users#show"
-  post '/me/:user_id/moments', to: "moments#create"
-
-  get '/me/:user_id/moments', to: "moments#index"
-  #get '/me/:user_id/moments/:moment_id', to: "moments#show"
+  post '/moments', to: "moments#create"
+  get '/me/:user_id/moments', to: "moments#index" 
+  delele '/moments/:moment_id', to: "moments#destory"
 
   post '/signup', to: "users#create"
   post '/login', to: "sessions#create"
