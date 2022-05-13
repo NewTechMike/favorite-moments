@@ -49,7 +49,7 @@ function App() {
             <Me />
           </Route>
           <Route path='/moments'>
-            <Moments />
+            <Moments key={count}/>
           </Route>
         </Switch>
       </div>
