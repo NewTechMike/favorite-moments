@@ -26,6 +26,10 @@ function App() {
     .then((data) => setCount(data.count));
   }, []);
 
+  function increaseCount(){
+    setCount(count + 1)
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -49,7 +53,10 @@ function App() {
             <Me />
           </Route>
           <Route path='/moments'>
-            <Moments key={count}/>
+            <Moments 
+            key={count}
+            onCount={increaseCount}
+            />
           </Route>
         </Switch>
       </div>

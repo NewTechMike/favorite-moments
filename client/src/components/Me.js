@@ -48,8 +48,6 @@ function Me(){
       .then((data) => console.log(data));
   }
 
-  console.log("title: ",title)
-
   function handleMomentClick(){
     history.push('/moments');
   }

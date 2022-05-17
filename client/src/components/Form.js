@@ -1,10 +1,11 @@
 import React from 'react';
 
-function Form(){
+function Form({refresh}){
 
+    console.log(refresh)
   return (
   <div>
-    <h1>I'm a Form!</h1>
+    <h1>I'm a Form!{refresh}</h1>
   </div>
   )
 }
