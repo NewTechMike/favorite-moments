@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 function Login ({setUser}){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
   const history = useHistory();
 
   function handleSubmit(e){
@@ -17,12 +18,21 @@ function Login ({setUser}){
     }).then((r) => {
       if(r.ok) { 
         r.json().then((user) => setUser(user));
+        setTimeout (() => {
+          history.push('/me');
+        }, 500);
+      } else {
+        r.json().then((errorData) => setErrors(errorData.error))
       }
     });
-    setTimeout (() => {
-    history.push('/me');
-  }, 500);
   }
+  /**{errors.length > 0 && (
+            <ul style={{color: "red"}}>
+              {errors.map((error)=>(
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
+          )} */
   
   return(
     <div>
@@ -42,6 +52,7 @@ function Login ({setUser}){
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           /> <br/>
+          <ul style={{color: "red"}}>{errors}</ul>
           <button type="submit">Login</button>
       </form>
     </div>

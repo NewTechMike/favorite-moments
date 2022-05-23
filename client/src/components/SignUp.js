@@ -23,30 +23,14 @@ function SignUp ({setUser}){
     })
       .then((r) => {
         if(r.ok){
-          r.json().then((data) => console.log(data))
+          r.json().then((user) => setUser(user))
           setTimeout (() => {
             history.push('/me');
           }, 500);
         }else {
           r.json().then((errorData) => setErrors(errorData.errors))
         }
-
       })
-     
-   /* .then((user) => {
-      if(!user.errors) {
-        setUser(user)
-        setTimeout (() => {
-          history.push('/me');
-        }, 500);
-      } else {
-        setUsername("")
-        setPassword("")
-        setPasswordConfirmation("")
-        const error = user.errors.map(e=> <li>{e}</li>)
-        setErrors(error)
-      }
-    });   */
   }
 
   return(
@@ -86,7 +70,6 @@ function SignUp ({setUser}){
       )}
       <button type="submit">Submit</button>
       </form>
-
     </div>
   );
 }
