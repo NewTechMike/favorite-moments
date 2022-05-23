@@ -5,6 +5,7 @@ function SignUp ({setUser}){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([])
   const history = useHistory();
   
   function handleSubmit(e){
@@ -19,14 +20,33 @@ function SignUp ({setUser}){
         password: password,
         password_confirmation: passwordConfirmation,
       }),
-    }).then((r) => {
-      if(r.ok) {
-        r.json().then((user) => setUser(user));
+    })
+      .then((r) => {
+        if(r.ok){
+          r.json().then((data) => console.log(data))
+          setTimeout (() => {
+            history.push('/me');
+          }, 500);
+        }else {
+          r.json().then((errorData) => setErrors(errorData.errors))
+        }
+
+      })
+     
+   /* .then((user) => {
+      if(!user.errors) {
+        setUser(user)
+        setTimeout (() => {
+          history.push('/me');
+        }, 500);
+      } else {
+        setUsername("")
+        setPassword("")
+        setPasswordConfirmation("")
+        const error = user.errors.map(e=> <li>{e}</li>)
+        setErrors(error)
       }
-    });
-    setTimeout (() => {
-      history.push('/me');
-    }, 500);
+    });   */
   }
 
   return(
@@ -57,8 +77,16 @@ function SignUp ({setUser}){
           value={passwordConfirmation}
           onChange={(e)=> setPasswordConfirmation(e.target.value)}
         /> <br/>
-        <button type="submit">Submit</button>
+      {errors.length > 0 && (
+        <ul style={{color: "red"}}>
+          {errors.map((error)=>(
+            <li key={error}>{error}</li>
+            ))}
+        </ul>
+      )}
+      <button type="submit">Submit</button>
       </form>
+
     </div>
   );
 }

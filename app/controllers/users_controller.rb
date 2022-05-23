@@ -4,8 +4,12 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
 
   def create 
     user = User.create!(user_params)
-    session[:user_id] = user.id
-    render json: user, status: :created
+    if user.valid?
+      session[:user_id] = user.id
+      render json: user, status: :created
+    else 
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+    end
   end 
 
   def show
@@ -16,7 +20,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid_response
   private 
 
   def render_record_invalid_response(e)
-    return render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+    return render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
   end 
 
   def user_params
