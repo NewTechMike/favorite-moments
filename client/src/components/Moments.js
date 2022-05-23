@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Form from './Form';
 
-function Moments({count, onCount}){
+function Moments({onCount}){
   const [showMoments, setShowMoments] = useState([""]);
   const history = useHistory();
-  //console.log("temp: ", temp)
 
   function handleClick(){
     history.push('/me');

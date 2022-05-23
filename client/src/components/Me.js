@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-//import Form from './Form';
 import Moments from './Moments'
 
 function Me(){
@@ -10,6 +9,7 @@ function Me(){
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [moment, setMoment] = useState("");
+  const [errors, setErrors] = useState([]);
  
   useEffect(()=>{
     fetch('/me')
@@ -36,7 +36,6 @@ function Me(){
       category: category,
       moment: moment
     }
-    console.log("obj: ", obj)
     fetch("/moments", {
       method: "POST", 
       headers: {
@@ -44,9 +43,15 @@ function Me(){
       },
       body: JSON.stringify(obj)
   })
-      .then((r)=>r.json())
-      .then((data) => console.log(data));
-  }
+      .then((r)=> {
+        if(r.ok) {
+          r.json().then((data) => console.log(data));
+        } else {
+          r.json().then((errorData) => setErrors(errorData.errors));
+        }
+      })
+    }
+    
 
   function handleMomentClick(){
     history.push('/moments');
@@ -85,6 +90,13 @@ function Me(){
             onChange={(e) => setMoment(e.target.value)}
             />
         </label> <br/>
+        {errors.length > 0 && (
+        <ul style={{color: "red"}}>
+          {errors.map((error)=>(
+            <li key={error}>{error}</li>
+            ))}
+        </ul>
+      )}
         <input 
           type="submit" 
           value="Submit" 

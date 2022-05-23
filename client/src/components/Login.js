@@ -26,13 +26,7 @@ function Login ({setUser}){
       }
     });
   }
-  /**{errors.length > 0 && (
-            <ul style={{color: "red"}}>
-              {errors.map((error)=>(
-                <li key={error}>{error}</li>
-              ))}
-            </ul>
-          )} */
+ 
   
   return(
     <div>
