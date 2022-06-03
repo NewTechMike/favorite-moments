@@ -22,7 +22,6 @@ class MomentsController < ApplicationController
   end 
 
   def index
-    #byebug
     moments = current_user.moments
     render json: moments
   end
@@ -33,10 +32,16 @@ class MomentsController < ApplicationController
     head :no_content
   end
   
-=begin
   def update
+    moment = Moment.find_by(id: params[:id])
+    if moment
+      moment.update(moment_params)
+      #byebug
+      render json: moment
+    else
+      render json: { error: "Moment not found" }, status: :not_found
+    end
   end 
-=end
 
   private
   

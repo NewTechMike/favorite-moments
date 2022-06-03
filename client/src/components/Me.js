@@ -46,6 +46,9 @@ function Me(){
       .then((r)=> {
         if(r.ok) {
           r.json().then((data) => console.log(data));
+          setTimeout(()=>{
+            history.push('/moments')
+          }, 100)
         } else {
           r.json().then((errorData) => setErrors(errorData.errors));
         }
