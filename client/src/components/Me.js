@@ -57,6 +57,9 @@ function Me(){
     
 
   function handleMomentClick(){
+    console.log(user.username);
+
+    <Moments username={user.username} />
     history.push('/moments');
   }
 

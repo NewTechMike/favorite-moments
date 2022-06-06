@@ -3,7 +3,6 @@ class MomentsController < ApplicationController
 
   def create
     moment = current_user.moments.create(moment_params)
-    #byebug
     if moment.valid?
       render json: moment, status: :created
     else 
@@ -12,7 +11,6 @@ class MomentsController < ApplicationController
   end
 
   def show
-    #byebug
     moment = current_user.moments.find_by(id: params[:id])
     if moment
       render json: moment
@@ -23,7 +21,7 @@ class MomentsController < ApplicationController
 
   def index
     moments = current_user.moments
-    render json: moments
+    render json: moments.order(:id)
   end
   
   def destroy
@@ -36,7 +34,6 @@ class MomentsController < ApplicationController
     moment = Moment.find_by(id: params[:id])
     if moment
       moment.update(moment_params)
-      #byebug
       render json: moment
     else
       render json: { error: "Moment not found" }, status: :not_found

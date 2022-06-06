@@ -9,7 +9,7 @@ import '../App.css';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(" ");
 
   useEffect(() => {
     fetch("/me")
@@ -56,6 +56,7 @@ function App() {
             <Moments 
             key={count}
             onCount={increaseCount}
+            username={user.username}
             />
           </Route>
         </Switch>

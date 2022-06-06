@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function Moments({onCount}){
+function Moments({onCount, username}){
   const [showMoments, setShowMoments] = useState([""]);
   const [newMoment, setNewMoment] = useState("");
   const [editing, setEditing] = useState(false);
@@ -10,7 +10,6 @@ function Moments({onCount}){
 
   function handleClick(){
     history.push('/me');
-   // console.log(username)
   }
   
   function handleMomentDelete(id){
@@ -26,10 +25,6 @@ function Moments({onCount}){
     }
 
     function handleMomentEdit(momentData){
-      
-      console.log("Moment: ", momentData)
-      console.log("newMoment: ", newMoment)
-
       if(editing === true ){
         fetch(`/moments/${momentData.id}`,{
           method: "PATCH",
@@ -40,14 +35,12 @@ function Moments({onCount}){
         })
           .then((r) => r.json())
           .then((mData) => console.log("mData: ", mData))
-          //console.log("NM: ", newMoment)
-          console.log(`edit is ${editing}`)
+        
           handleEdit()
           setTimeout(() => {
             onCount();
           }, 250);
-    } else {
-        console.log(`edit is ${editing}`)
+      } else {   
         handleEdit()
       }
     }
@@ -65,11 +58,11 @@ function Moments({onCount}){
 
   return(
     <div>
-      <h1>Moments</h1>
+      <h1>Welcome {username}, to your Favorite Moments</h1>
       <button onClick={handleClick}>Home</button>
       {showMoments.map((momentData)=>(
         <ul key={"a" + momentData.id}>
-          <li>{momentData.id}, {momentData.title}, {momentData.category}</li>
+          <p>{momentData.title}, {momentData.category}</p>
          
           {editing ? 
           <textarea 
@@ -83,6 +76,7 @@ function Moments({onCount}){
             onClick={() => handleMomentEdit(momentData)}>
           </input>
           <button type="button" onClick={() => handleMomentDelete(momentData.id)}>Delete</button>
+          <br></br>
         </ul>
       ))}
     </div>

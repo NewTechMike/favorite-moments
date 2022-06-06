@@ -13,6 +13,29 @@
   }
 }
 
+h1 {
+  color: black;
+  text-shadow: 2px 2px silver;
+}
+
+body {
+  background-image: url("./images/openbooks.jpeg");
+  background-color: maroon;
+  color: whitesmoke;
+  font-style: bold;
+  font-weight: 450;
+  text-shadow: 2px 2px black;
+}
+
+ul {
+  list-style-type: none; padding: 4px; margin: 0px;
+  text-align: center;
+}
+
+input {
+  text-align: center;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
