@@ -14,26 +14,28 @@
 }
 
 h1 {
-  color: black;
+  color: blue;
   text-shadow: 2px 2px silver;
 }
 
 body {
   background-image: url("./images/openbooks.jpeg");
   background-color: maroon;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: whitesmoke;
   font-style: bold;
   font-weight: 450;
   text-shadow: 2px 2px black;
 }
 
-ul {
-  list-style-type: none; padding: 4px; margin: 0px;
+form {
   text-align: center;
 }
 
-input {
-  text-align: center;
+ul {
+  list-style-type: none; padding: 2px; margin: 0px;
+  color: grey;
 }
 
 .App-header {

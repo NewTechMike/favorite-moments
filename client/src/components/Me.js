@@ -75,24 +75,27 @@ function Me(){
       <form onSubmit={handleSubmit} >
         <label>
           Title:
-          <input 
+          <br></br>
+          <textarea 
             type="text" 
             name="title" 
             placeholder="ex: The Matrix"
             onChange={(e) => setTitle(e.target.value)}
             /> <br/>
           Category:
-          <input 
+          <br></br>
+          <textarea 
             type="text" 
             name="category" 
             placeholder="ex: Movie"
             onChange={(e) => setCategory(e.target.value)}
             /> <br/>
           Moment: 
+          <br></br>
           <textarea 
             type="text" 
             name="title" 
-            placeholder="ex: Bullet time"
+            placeholder=" "
             onChange={(e) => setMoment(e.target.value)}
             />
         </label> <br/>

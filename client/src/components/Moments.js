@@ -63,7 +63,6 @@ function Moments({onCount, username}){
       {showMoments.map((momentData)=>(
         <ul key={"a" + momentData.id}>
           <p>{momentData.title}, {momentData.category}</p>
-         
           {editing ? 
           <textarea 
             defaultValue={`${momentData.moment}`}
