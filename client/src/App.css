@@ -25,6 +25,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-blend-mode:soft-light ;
+  background-size: cover;
   color: whitesmoke;
   font-style: bold;
   font-weight: 500;
