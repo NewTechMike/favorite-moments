@@ -13,7 +13,8 @@ function Home(){
 
   return (
     <div>
-      <h1>Welcome Traveler!</h1>
+      <h1>Welcome Traveler, </h1> 
+      <h1>to Favorite Moments!</h1>
       <p1>Throughout your adventures in Books, Movies, Games, 
         and everything else, your mind must be filled with
         some of your Favorite Moments. Like the Pensieve in Harry Potter, 
