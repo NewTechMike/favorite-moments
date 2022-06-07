@@ -33,6 +33,10 @@ function SignUp ({setUser}){
       })
   }
 
+  function handleBackClick(){
+    history.push('/home');
+  }
+
   return(
     <div>
       <form onSubmit={handleSubmit}>
@@ -73,6 +77,7 @@ function SignUp ({setUser}){
         </ul>
       )}
       <button type="submit">Submit</button>
+      <button type="button" onClick={handleBackClick}>Back</button>
       </form>
     </div>
   );

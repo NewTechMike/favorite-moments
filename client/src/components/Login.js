@@ -26,8 +26,11 @@ function Login ({setUser}){
       }
     });
   }
+
+  function handleBackClick(){
+    history.push('/home');
+  }
  
-  
   return(
     <div>
       <form onSubmit={handleSubmit}>
@@ -50,6 +53,7 @@ function Login ({setUser}){
           /> <br/>
           <ul style={{color: "red"}}>{errors}</ul>
           <button type="submit">Login</button>
+          <button type="button" onClick={handleBackClick}>Back</button>
       </form>
     </div>
   )
