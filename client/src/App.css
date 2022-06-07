@@ -24,7 +24,7 @@ body {
   background-color: rgba(210, 180, 140, 0.541);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-blend-mode:soft-light ;
+  background-blend-mode: soft-light ;
   background-size: cover;
   color: whitesmoke;
   font-style: bold;
@@ -39,7 +39,7 @@ form {
 ul {
   list-style-type: none; padding: 2px; margin: 0px;
   color: rgba(0, 217, 255, 0.774);
-  font-family: 24px fantasy;
+  font-family: fantasy;
   font-size: 2em;
   font-weight: bold;
   text-shadow: 2px 2px black;
