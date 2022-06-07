@@ -29,6 +29,34 @@ npm install --prefix client
 ```bash
   npm start --prefix client
 ``` 
+
+## Ruby
+
+* Verify you have the lastest version of Ruby installed with: 
+
+```bash
+  rvm install 2.7.4 --default
+```
+
+* Also install the latest versions of bundler and rails with:
+```bash 
+gem install bundler
+gem install rails
+```
+
+## NodeJS
+
+* Verify the lastest version of Node is at least 16
+```bash
+nvm install 16
+nvm use 16
+nvm alias default 16
+```
+* You can also update your npm with:
+```bash
+npm i -g npm
+```
+
 # README
 
 This README would normally document whatever steps are necessary to get the
