@@ -5,7 +5,7 @@ import Moments from './Moments'
 function Me(){
   const [user, setUser] = useState("")
   const history = useHistory();
- 
+  
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [moment, setMoment] = useState("");
@@ -16,7 +16,7 @@ function Me(){
     .then((r)=>r.json())
     .then((user) => setUser(user))
   }, [])
-
+  
   function handleLogout(){
     fetch('/logout', {
       method: "DELETE"
@@ -28,6 +28,8 @@ function Me(){
     });
     history.push('/home')
   }
+
+  
 
   function handleSubmit(e){
     e.preventDefault();
@@ -54,11 +56,8 @@ function Me(){
         }
       })
     }
-    
 
   function handleMomentClick(){
-    console.log(user.username);
-
     <Moments username={user.username} />
     history.push('/moments');
   }
