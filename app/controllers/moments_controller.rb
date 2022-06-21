@@ -31,7 +31,7 @@ class MomentsController < ApplicationController
   
   def update
     if this_moment
-      moment.update(moment_params)
+      this_moment.update(moment_params)
       render json: this_moment
     else
       render json: { error: "Moment not found" }, status: :not_found
@@ -44,13 +44,12 @@ class MomentsController < ApplicationController
     return moment = Moment.find_by(id: params[:id])
   end 
 
-
   def current_user
     User.find_by(id: session[:user_id])
   end 
 
   def moment_params
-    params.permit(:category, :title, :moment)
+    params.permit(:title, :category, :moment)
   end 
 
 end
