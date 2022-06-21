@@ -25,16 +25,14 @@ class MomentsController < ApplicationController
   end
   
   def destroy
-    moment = Moment.find_by(id: params[:id])
-    moment.destroy 
+    this_moment.destroy 
     head :no_content
   end
   
   def update
-    moment = Moment.find_by(id: params[:id])
-    if moment
+    if this_moment
       moment.update(moment_params)
-      render json: moment
+      render json: this_moment
     else
       render json: { error: "Moment not found" }, status: :not_found
     end
@@ -42,6 +40,11 @@ class MomentsController < ApplicationController
 
   private
   
+  def this_moment
+    return moment = Moment.find_by(id: params[:id])
+  end 
+
+
   def current_user
     User.find_by(id: session[:user_id])
   end 
