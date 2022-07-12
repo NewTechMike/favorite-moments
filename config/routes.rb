@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :moment_feels
+  resources :feels, only: [:show, :index, :create]
   resources :moments, only: [:create, :show, :index, :destroy, :update]
   resources :users 
 
