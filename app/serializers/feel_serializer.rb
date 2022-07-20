@@ -1,3 +1,3 @@
 class FeelSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :emotion_name
 end

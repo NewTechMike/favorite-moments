@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :moments, only: [:create, :show, :index, :destroy, :update]
   resources :users 
 
-  post '/signup', to: "users#create"
+  get '/moments/:moment_id/feels', to: "feels#show"
 
+
+  post '/signup', to: "users#create"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
   get '/me', to: "users#show"

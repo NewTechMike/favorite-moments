@@ -1,17 +1,20 @@
 class FeelsController < ApplicationController
 
   def index
-    render json: Feel.all 
+    #byebug
+    feels = Feel.all
+    render json: feels 
   end 
 
   def show 
-    feel = Feel.find_by(id: params[:id])
-    render json: feel, include: :moment
+    moment = Moment.find_by(id: params[:moment_id])
+    feel = moment.feels.first
+    render json: feel, include: :emotion_name
   end 
 
   def create
     moment = Moment.find_by(id: params[:id])
-    feel = moment.feel.create(emotion_name: params[:emotion_name])
+    feel = moment.feels.create(emotion_name: params[:emotion_name])
     render json: feel, status: :created
   end 
 

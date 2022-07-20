@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import Feels from './Feels';
 
 function Moments({onCount, username}){
   const [showMoments, setShowMoments] = useState([""]);
@@ -50,6 +51,12 @@ function Moments({onCount, username}){
       {editing ? setEditButton("Edit") : setEditButton("Save")}
     }
 
+    const [felt, setFelt] = useState()
+    function handleFeelClick(id){
+      console.log("Clicked?: ", id)
+       setFelt(<Feels momentId={id}/>)
+    }
+
     useEffect(()=>{
       fetch('/moments')
       .then((r)=>r.json())
@@ -69,10 +76,17 @@ function Moments({onCount, username}){
             onChange={(e)=>setNewMoment(e.target.value)}></textarea>
             :`${momentData.moment}`} <br></br>
 
+          <div>
+            <button 
+            type="button" 
+            value="something"
+            onClick={()=>handleFeelClick(momentData.id)}>This Gave me feels</button>
+            {felt}
+          </div>
           <input 
             type="submit" 
             value={`${editButton}`} 
-            onClick={() => handleMomentEdit(momentData)}>
+            onClick={() => handleMomentEdit(momentData.id), console.log("Mo data: ", momentData.id)}>
           </input>
           <button type="button" onClick={() => handleMomentDelete(momentData.id)}>Delete</button>
           <br></br>
