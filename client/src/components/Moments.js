@@ -25,11 +25,9 @@ function Moments({onCount, username}){
       }, 250);
     }
 
-    function handleMomentEdit(momentData){
-      console.log("Edit Clicked: Edit is", editing)
-      console.log("MD: ", momentData)
+    function handleMomentEdit(id){
       if(editing === true ){
-        fetch(`/moments/${momentData}`,{
+        fetch(`/moments/${id}`,{
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -56,7 +54,7 @@ function Moments({onCount, username}){
     const [felt, setFelt] = useState()
     function handleFeelClick(id){
       console.log("Clicked?: ", id)
-       setFelt(<Feels momentId={id}/>)
+      setFelt(<Feels momentId={id}/>)
     }
 
     useEffect(()=>{
@@ -75,16 +73,19 @@ function Moments({onCount, username}){
           {editing ? 
           <textarea 
             defaultValue={`${momentData.moment}`}
-            onChange={(e)=>setNewMoment(e.target.value)}></textarea>
-            :`${momentData.moment}`} <br></br>
+            onChange={(e)=>setNewMoment(e.target.value)}>
+            </textarea>
+            :`${momentData.moment}`} 
+            <br></br>
 
-          <div>
+            <div>
             <button 
-            type="submit" 
-            value="something"
-            onClick={()=>handleFeelClick(momentData.id)}>Something</button>
-            {felt}
+            type="button" 
+            value={`${felt}`}
+            placeholder={"How'd that make you feel?"}
+            onClick={()=>handleFeelClick(momentData.id)}>{felt}</button>
           </div>
+
           <input 
             type="submit" 
             value={`${editButton}`} 
@@ -94,6 +95,7 @@ function Moments({onCount, username}){
           <br></br>
         </ul>
       ))}
+      
     </div>
   )
 }

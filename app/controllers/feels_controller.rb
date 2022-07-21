@@ -9,7 +9,11 @@ class FeelsController < ApplicationController
   def show 
     moment = Moment.find_by(id: params[:moment_id])
     feel = moment.feels.first
-    render json: feel, include: :emotion_name
+    if feel
+      render json: feel, include: :emotion_name
+    else
+      render json: {error: "Feel Not Found"}, status: :not_found
+    end 
   end 
 
   def create
