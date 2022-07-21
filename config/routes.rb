@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users 
 
   get '/moments/:moment_id/feels', to: "feels#show"
+  get '/moments/:moment_id/', to: "moments#index"
 
 
   post '/signup', to: "users#create"

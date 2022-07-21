@@ -26,8 +26,10 @@ function Moments({onCount, username}){
     }
 
     function handleMomentEdit(momentData){
+      console.log("Edit Clicked: Edit is", editing)
+      console.log("MD: ", momentData)
       if(editing === true ){
-        fetch(`/moments/${momentData.id}`,{
+        fetch(`/moments/${momentData}`,{
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -78,15 +80,15 @@ function Moments({onCount, username}){
 
           <div>
             <button 
-            type="button" 
+            type="submit" 
             value="something"
-            onClick={()=>handleFeelClick(momentData.id)}>This Gave me feels</button>
+            onClick={()=>handleFeelClick(momentData.id)}>Something</button>
             {felt}
           </div>
           <input 
             type="submit" 
             value={`${editButton}`} 
-            onClick={() => handleMomentEdit(momentData.id), console.log("Mo data: ", momentData.id)}>
+            onClick={() => handleMomentEdit(momentData.id)}>
           </input>
           <button type="button" onClick={() => handleMomentDelete(momentData.id)}>Delete</button>
           <br></br>

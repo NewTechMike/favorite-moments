@@ -20,6 +20,7 @@ class MomentsController < ApplicationController
   end 
 
   def index
+    #byebug
     moments = current_user.moments
     render json: moments.order(:id)
   end

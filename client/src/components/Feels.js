@@ -11,6 +11,8 @@ function Feels({momentId}){
   }, [])
 
   //console.log(feelings)
+  //After adding a field for the user to enter new feeling
+  //Throw a conditional if Feeling does not exist, add feel
 
   return(
     <div>
