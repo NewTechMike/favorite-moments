@@ -29,8 +29,6 @@ function Me(){
     history.push('/home')
   }
 
-  
-
   function handleSubmit(e){
     e.preventDefault();
     const obj = {

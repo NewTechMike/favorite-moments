@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :moments, only: [:create, :show, :index, :destroy, :update]
   resources :users 
 
-  get '/moments/:moment_id/feels', to: "feels#show"
-  get '/moments/:moment_id/', to: "moments#index"
+  get '/moments/:moment_id/feels', to: "moments#moment_feels_index"
+  #get '/moments/:moment_id/', to: "moments#index"
 
 
   post '/signup', to: "users#create"

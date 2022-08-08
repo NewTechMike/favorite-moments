@@ -1,29 +1,40 @@
 import React, {useEffect, useState} from 'react'
 
 function Feels({momentId}){
-  const [feelings, setFeelings] = useState("");
+  
+
+
+
   const [feelMoment, setFeelMoment] = useState();
+  const [felt, setFelt] = useState()
+//  function handleFeelClick(id){
 
-  console.log("Mo Id: ", momentId)
-  useEffect(()=> {
-    fetch(`/moments/${momentId}/feels`)
-    .then((r) => r.json())
-    .then((feelData) =>{ 
-      if(feelData.emotion_name){
-          setFeelings(feelData.emotion_name)
-          console.log(momentId)
-        } else {
-          console.log("its null")
-        }}
-      )}, [])
+//console.log("Mo Id: ", id)
+//useEffect(()=> {
+  //fetch(`/moments/${id}/feels`)
+  //.then((r) => r.json())
+  //.then((feelData) =>{ 
+    //if(feelData.emotion_name){
+        //setFeelings(feelData.emotion_name)
+        //console.log("Feelings: ", feelings)
+      //} else {
+     //   console.log("its null")
+   //   }}
+  //  )}, [])
+ // }
 
-  console.log("Feelings: ", feelings)
+
+
+      //Possible Idea to fix same feel showing for all moments:
+      //Either get all Feels and send it as state to Moments
+      //or find another way to .map each field to the moments (Not sure how or if possible)
+  //console.log("Feelings: ", feelings)
   //After adding a field for the user to enter new feeling
   //Throw a conditional if Feeling does not exist, add feel
 
   return(
     <div>
-      <li style={{color: "green"}}>I feel {feelings}</li>
+      <li style={{color: "green"}}>I feel feelings</li>
     </div>
   )
 }

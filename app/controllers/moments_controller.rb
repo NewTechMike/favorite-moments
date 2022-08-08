@@ -19,6 +19,17 @@ class MomentsController < ApplicationController
     end
   end 
 
+  def moment_feels_index 
+    #byebug
+    moment = Moment.find_by(id: params[:moment_id])
+    feel = moment.feels.all
+    if feel
+      render json: feel, include: :emotion_name
+    else
+      render json: {error: "Feel Not Found"}, status: :not_found
+    end 
+  end 
+
   def index
     #byebug
     moments = current_user.moments
