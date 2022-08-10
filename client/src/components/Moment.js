@@ -10,6 +10,8 @@ function Moment({momentData, onCount}){
 
   const [newMoment, setNewMoment] = useState("");
   
+  const [feltClick, setFeltClick] = useState("");
+
   function handleMomentDelete(id){
     fetch(`/moments/${id}`,{
       method: "DELETE",
@@ -58,13 +60,18 @@ function Moment({momentData, onCount}){
     ) 
     } else {
       setFClick(!fClick)
-      console.log("fClick: ", fClick)
     }
   }
-    console.log("Moment f: ", feelings)
-    function handleFeelSubmit(){
+  
+    function handleFeelSubmit(e){
+      e.preventDefault();
       console.log("HandleFeelSubmit triggered")
     }
+
+    function handleFeltClick(e){
+      console.log("Feel Click...Clicked", e)
+    }
+
     
   return(
     <div>
@@ -79,11 +86,11 @@ function Moment({momentData, onCount}){
           } 
             <br></br>
             
-            <input 
+          <input 
             type="submit" 
             value={`${editButton}`} 
             onClick={() => handleMomentEdit(momentData.id)}>
-           </input>  
+          </input>  
          
           <button type="button" onClick={() => handleMomentDelete(momentData.id)}>Delete</button>
           <br></br>
@@ -96,16 +103,19 @@ function Moment({momentData, onCount}){
               </button>
               <br></br>
 
-              <form onSubmit={handleFeelSubmit}>
-              {fClick ? 
-                  <textarea
-                    type="submit"
-                    placeholder="For Emoji Keyboard:  Command-Control-Space"
-                    onSubmit={(e)=> console.log(e.target.value)}
-                    ></textarea>
+              <form onClick={handleFeltClick(feltClick)}>
+                {fClick ? 
+                  <input
+                    type="text"
+                    placeholder="For Emoji Keyboard: Command-Control-Space"
+                    onChange={(e)=> setFeltClick(e.target.value)}
+                  />
                     : null
-              }
-                </form>
+                }
+                {fClick ? 
+                  <button type="button" >Feeling?</button> : null
+                }
+              </form>
               <ul id="feelings">{feelings}</ul>
               
             </div>
