@@ -30,6 +30,14 @@ class MomentsController < ApplicationController
     end 
   end 
 
+ # def moment_feels_create
+  #  moment = Moment.find_by(id: params[:moment_id])
+    #byebug
+   # feel = moment.feels.create(emotion_name: params[:emotion_name])
+    #render json: feel, status: :created
+  #end 
+
+
   def index
     #byebug
     moments = current_user.moments

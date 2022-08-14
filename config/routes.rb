@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :users 
 
   get '/moments/:moment_id/feels', to: "moments#moment_feels_index"
+  post '/moments/:moment_id/feels', to: "feels#create"
   #get '/moments/:moment_id/', to: "moments#index"
-
 
   post '/signup', to: "users#create"
   post '/login', to: "sessions#create"
@@ -16,6 +16,5 @@ Rails.application.routes.draw do
   get '/hello', to: 'application#hello_world'
   get '*path',
     to: 'fallback#index',
-    constraints: ->(req) { !req.xhr? && req.format.html? }
-    
+    constraints: ->(req) { !req.xhr? && req.format.html? }  
 end

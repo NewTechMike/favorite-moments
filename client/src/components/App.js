@@ -5,6 +5,7 @@ import Home from './Home';
 import Login from './Login';
 import Me from './Me';
 import Moments from './Moments';
+import NavBar from "./NavBar";
 import '../App.css';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <NavBar />
         <Switch>
           <Route path="/testing">
             <h1>Test Route</h1>

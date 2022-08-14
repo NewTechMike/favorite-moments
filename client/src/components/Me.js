@@ -54,11 +54,7 @@ function Me(){
         }
       })
     }
-
-  function handleMomentClick(){
-    <Moments username={user.username} />
-    history.push('/moments');
-  }
+    <Moments setUser={setUser}/>
 
   return (
     <div>
@@ -73,7 +69,7 @@ function Me(){
         <label>
           Title:
           <br></br>
-          <textarea 
+          <input 
             type="text" 
             name="title" 
             placeholder="ex: The Matrix"
@@ -81,7 +77,7 @@ function Me(){
             /> <br/>
           Category:
           <br></br>
-          <textarea 
+          <input
             type="text" 
             name="category" 
             placeholder="ex: Movie"
@@ -108,7 +104,7 @@ function Me(){
           value="Submit" 
         />
       </form>
-      <button onClick={handleMomentClick}>Moments</button>
+      
       </div>
     </div>
   )
